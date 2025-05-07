@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MatematikUsta - Onlayn Matematika O'rganish</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #64748b;
+            --light: #f8fafc;
+            --dark: #0f172a;
+            --accent: #8b5cf6;
+        }
+
+        body {
+            color: var(--dark);
+            line-height: 1.6;
+            background-color: var(--light);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header and Navigation */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--secondary);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--secondary);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 150px 0 100px;
+            background: linear-gradient(135deg, #dbeafe 0%, #ede9fe 100%);
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: var(--secondary);
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: var(--secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: var(--light);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        /* Courses Section */
+        .courses {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .course-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .course-img {
+            height: 200px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            font-size: 18px;
+        }
+
+        .course-content {
+            padding: 25px;
+        }
+
+        .course-content h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .course-content p {
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        /* Calculator Demo */
+        .calculator-demo {
+            padding: 100px 0;
+            background-color: white;
+        }
+
+        .calculator {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: var(--dark);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .calculator-display {
+            background-color: var(--light);
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: right;
+            font-size: 24px;
+            font-weight: 500;
+            min-height: 60px;
+        }
+
+        .calculator-keys {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .calculator-key {
+            background-color: var(--light);
+            border: none;
+            padding: 15px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .calculator-key:hover {
+            background-color: #e2e8f0;
+        }
+
+        .key-operator {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .key-operator:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .key-equal {
+            background-color: var(--accent);
+            color: white;
+            grid-column: span 2;
+        }
+
+        .key-equal:hover {
+            background-color: #7c3aed;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+        }
+
+        .author-info h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            color: var(--secondary);
+            font-size: 14px;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            max-width: 600px;
+            margin: 0 auto 40px;
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        .btn-light {
+            background-color: white;
+            color: var(--primary);
+        }
+
+        .btn-light:hover {
+            background-color: var(--light);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: #94a3b8;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .section-title h2 {
+                font-size: 30px;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                transform: translateY(-150%);
+                transition: transform 0.3s;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">Matematik<span>Usta</span></a>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#features">Xususiyatlar</a></li>
+                    <li><a href="#courses">Kurslar</a></li>
+                    <li><a href="#calculator">Kalkulyator</a></li>
+                    <li><a href="#testimonials">Fikrlar</a></li>
+                    <li><a href="#" class="btn">Boshlash</a></li>
+                </ul>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Matematikani to'g'ri usulda o'rganing</h1>
+            <p>Oddiy arifmetikadan murakkab matematikagacha bo'lgan bilimlarni interaktiv darslar, mashqlar va mutaxassislar yordamida o'zlashtirishingiz mumkin.</p>
+            <a href="#" class="btn">Hozir o'rganishni boshlang</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nima uchun MatematikUsta?</h2>
+                <p>Bizning platformamiz matematikani qiziqarli va samarali o'rganish uchun mo'ljallangan noyob xususiyatlarga ega.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>Keng qamrovli o'quv dasturi</h3>
+                    <p>Boshlang'ich matematikadan murakkab mavzulargacha, bizning o'quv dasturimiz matematika ta'limining barcha jihatlarini qamrab oladi.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Shaxsiylashtirilgan ta'lim</h3>
+                    <p>Sizning bilim darajangiz va o'rganish tezligingizga moslashadigan adaptiv o'rganish texnologiyasi.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧩</div>
+                    <h3>Interaktiv mashqlar</h3>
+                    <p>Darhol fikr-mulohaza va tushuntirishlar bilan interaktiv masalalarni yechib ko'ring.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="courses" id="courses">
+        <div class="container">
+            <div class="section-title">
+                <h2>Bizning matematika kurslarimiz</h2>
+                <p>Turli yosh guruhlari va bilim darajalari uchun mo'ljallangan kurslarimizni o'rganing.</p>
+            </div>
+            <div class="courses-grid">
+                <div class="course-card">
+                    <div class="course-img">Boshlang'ich matematika</div>
+                    <div class="course-content">
+                        <h3>Boshlang'ich matematika</h3>
+                        <p>Oddiy arifmetika, kasrlar va geometriya bilan mustahkam poydevor yarating.</p>
+                        <a href="#" class="btn">Batafsil</a>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-img">Algebra va trigonometriya</div>
+                    <div class="course-content">
+                        <h3>Algebra va trigonometriya</h3>
+                        <p>Amaliy misollar bilan tenglamalar, funksiyalar va trigonometrik tushunchalarni o'rganing.</p>
+                        <a href="#" class="btn">Batafsil</a>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-img">Matematik analiz va boshqalar</div>
+                    <div class="course-content">
+                        <h3>Matematik analiz va boshqalar</h3>
+                        <p>Hosilalar, integrallar va ilg'or matematik tushunchalarni o'rganing.</p>
+                        <a href="#" class="btn">Batafsil</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator Demo Section -->
+    <section class="calculator-demo" id="calculator">
+        <div class="container">
+            <div class="section-title">
+                <h2>Interaktiv kalkulyatorimizni sinab ko'ring</h2>
+                <p>Ushbu oddiy kalkulyator bilan interaktiv o'rganish vositalarimizning namunasini ko'ring.</p>
+            </div>
+            <div class="calculator">
+                <div class="calculator-display" id="calculatorDisplay">0</div>
+                <div class="calculator-keys">
+                    <button class="calculator-key">7</button>
+                    <button class="calculator-key">8</button>
+                    <button class="calculator-key">9</button>
+                    <button class="calculator-key key-operator">÷</button>
+                    <button class="calculator-key">4</button>
+                    <button class="calculator-key">5</button>
+                    <button class="calculator-key">6</button>
+                    <button class="calculator-key key-operator">×</button>
+                    <button class="calculator-key">1</button>
+                    <button class="calculator-key">2</button>
+                    <button class="calculator-key">3</button>
+                    <button class="calculator-key key-operator">-</button>
+                    <button class="calculator-key">0</button>
+                    <button class="calculator-key">.</button>
+                    <button class="calculator-key key-operator">+</button>
+                    <button class="calculator-key key-equal">=</button>
+                    <button class="calculator-key" style="grid-column: span 4;">Tozalash</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>O'quvchilarimiz fikrlari</h2>
+                <p>MatematikUsta bilan matematikani tushunishni o'zgartirgan o'quvchilarimiz fikrlarini eshiting.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"MatematikUsta menga matematikadan qo'rqishni yengishga yordam berdi. Interaktiv darslar va bosqichma-bosqich tushuntirishlar murakkab tushunchalarni tushunishni osonlashtirdi."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AS</div>
+                        <div class="author-info">
+                            <h4>Alisher Safarov</h4>
+                            <p>Maktab o'quvchisi</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Ota-ona sifatida, MatematikUsta qizimning matematikaga bo'lgan ishonchini oshirganidan hayratdaman. Shaxsiylashtirilgan yondashuv sezilarli farq yaratdi."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">GK</div>
+                        <div class="author-info">
+                            <h4>Gulnora Karimova</h4>
+                            <p>Ota-ona</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"O'quv dasturi keng qamrovli va yaxshi tuzilgan. Men MatematikUstani qo'shimcha yordamga muhtoj o'quvchilari bo'lgan barcha hamkasblarimga tavsiya qildim."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">BT</div>
+                        <div class="author-info">
+                            <h4>Bobur Toshmatov</h4>
+                            <p>Matematika o'qituvchisi</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Matematikani o'zlashtirishga tayyormisiz?</h2>
+            <p>Bizning platformamiz bilan matematikani tushunishni o'zgartirgan minglab o'quvchilarga qo'shiling.</p>
+            <a href="#" class="btn btn-light">Bepul ro'yxatdan o'ting</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>MatematikUsta</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Biz haqimizda</a></li>
+                        <li><a href="#">Bizning jamoa</a></li>
+                        <li><a href="#">Karyera</a></li>
+                        <li><a href="#">Bog'lanish</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Kurslar</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Boshlang'ich matematika</a></li>
+                        <li><a href="#">Algebra</a></li>
+                        <li><a href="#">Geometriya</a></li>
+                        <li><a href="#">Matematik analiz</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Resurslar</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Ish varaqalari</a></li>
+                        <li><a href="#">Formula varaqasi</a></li>
+                        <li><a href="#">Ko'p so'raladigan savollar</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Huquqiy</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Foydalanish shartlari</a></li>
+                        <li><a href="#">Maxfiylik siyosati</a></li>
+                        <li><a href="#">Cookie siyosati</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 MatematikUsta. Barcha huquqlar himoyalangan.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+        });
+
+        // Simple Calculator Functionality
+        const calculatorDisplay = document.getElementById('calculatorDisplay');
+        const calculatorKeys = document.querySelector('.calculator-keys');
+        
+        let displayValue = '0';
+        let firstOperand = null;
+        let waitingForSecondOperand = false;
+        let operator = null;
+
+        function updateDisplay() {
+            calculatorDisplay.textContent = displayValue;
+        }
+
+        function inputDigit(digit) {
+            if (waitingForSecondOperand) {
+                displayValue = digit;
+                waitingForSecondOperand = false;
+            } else {
+                displayValue = displayValue === '0' ? digit : displayValue + digit;
+            }
+        }
+
+        function inputDecimal() {
+            if (waitingForSecondOperand) {
+                displayValue = '0.';
+                waitingForSecondOperand = false;
+                return;
+            }
+
+            if (!displayValue.includes('.')) {
+                displayValue += '.';
+            }
+        }
+
+        function handleOperator(nextOperator) {
+            const inputValue = parseFloat(displayValue);
+
+            if (operator && waitingForSecondOperand) {
+                operator = nextOperator;
+                return;
+            }
+
+            if (firstOperand === null && !isNaN(inputValue)) {
+                firstOperand = inputValue;
+            } else if (operator) {
+                const result = calculate(firstOperand, inputValue, operator);
+                displayValue = `${parseFloat(result.toFixed(7))}`;
+                firstOperand = result;
+            }
+
+            waitingForSecondOperand = true;
+            operator = nextOperator;
+        }
+
+        function calculate(firstOperand, secondOperand, operator) {
+            if (operator === '+') {
+                return firstOperand + secondOperand;
+            } else if (operator === '-') {
+                return firstOperand - secondOperand;
+            } else if (operator === '×') {
+                return firstOperand * secondOperand;
+            } else if (operator === '÷') {
+                return firstOperand / secondOperand;
+            }
+            return secondOperand;
+        }
+
+        function resetCalculator() {
+            displayValue = '0';
+            firstOperand = null;
+            waitingForSecondOperand = false;
+            operator = null;
+        }
+
+        calculatorKeys.addEventListener('click', (event) => {
+            const { target } = event;
+            
+            if (!target.matches('button')) {
+                return;
+            }
+
+            if (target.classList.contains('key-operator')) {
+                handleOperator(target.textContent);
+                updateDisplay();
+                return;
+            }
+
+            if (target.classList.contains('key-equal')) {
+                handleOperator('=');
+                updateDisplay();
+                return;
+            }
+
+            if (target.textContent === 'Tozalash') {
+                resetCalculator();
+                updateDisplay();
+                return;
+            }
+
+            if (target.textContent === '.') {
+                inputDecimal();
+                updateDisplay();
+                return;
+            }
+
+            inputDigit(target.textContent);
+            updateDisplay();
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                if (this.getAttribute('href') === '#') return;
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        mobileMenuBtn.textContent = '☰';
+                    }
+                }
+            });
+        });
+
+        // Animation on scroll
+        window.addEventListener('scroll', () => {
+            const featureCards = document.querySelectorAll('.feature-card');
+            featureCards.forEach(card => {
+                const cardPosition = card.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (cardPosition < screenPosition) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        // Initialize feature cards with opacity 0 for animation
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        });
+    </script>
+</body>
+</html>
